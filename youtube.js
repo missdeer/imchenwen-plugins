@@ -13,7 +13,7 @@ var website_description = '\
     </p>'
 
     
-var api_key = moonplayer.get_configuration('api_key');
+var api_key = imchenwen.get_configuration('api_key');
 var pageTokens = [];
 
 
@@ -33,7 +33,7 @@ function search(key, page) {
     }
 
     if (api_key === undefined) {
-        moonplayer.warning('Please set the API key first!');
+        imchenwen.warning('Please set the API key first!');
         return;
     }
 
@@ -50,11 +50,11 @@ function search(key, page) {
     else if (page < pageTokens.length)
         qs['pageToken'] = pageTokens[page];
     else {
-        moonplayer.warning("Cannot skip page due to the limitation of Youtube's API.");
+        imchenwen.warning("Cannot skip page due to the limitation of Youtube's API.");
         return;
     }
     var url = 'https://www.googleapis.com/youtube/v3/search?' + serialize(qs);
-    moonplayer.get_content(url, function(content) {
+    imchenwen.get_content(url, function(content) {
         var data = JSON.parse(content);
         var result = [];
         for (var i in data.items) {
@@ -67,15 +67,15 @@ function search(key, page) {
         }
         if (page + 1 === pageTokens.length && 'nextPageToken' in data)
             pageTokens.push(data.nextPageToken);
-        moonplayer.show_result(result);
+        imchenwen.show_result(result);
     });
 }
 
 // Set API key
 function set_api_key() {
-    moonplayer.get_text('Please enter a new API Key:', api_key, function(text) {
+    imchenwen.get_text('Please enter a new API Key:', api_key, function(text) {
         api_key = text;
-        moonplayer.set_configuration('api_key', api_key);
-        moonplayer.information('Successfully set the API Key.');
+        imchenwen.set_configuration('api_key', api_key);
+        imchenwen.information('Successfully set the API Key.');
     });
 }

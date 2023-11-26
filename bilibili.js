@@ -39,7 +39,7 @@ function search(key, page) {
     }
 
     var url = 'http://app.bilibili.com/x/v2/search/type?pn=1&ps=20&type=1&build=10110100&keyword=' + key;
-    moonplayer.get_content(url, function(content) {
+    imchenwen.get_content(url, function(content) {
         var items = JSON.parse(content).data.items;
         var pr;
         try {
@@ -54,7 +54,7 @@ function search(key, page) {
         var result = [];
         for (var i in items)
             result.push({title: items[i].title, url: convert_to_album_url(items[i].uri)});
-        moonplayer.show_result(result);
+        imchenwen.show_result(result);
     });
 }
 
@@ -89,20 +89,20 @@ function explore(command) {
         case 'plugin:bangumi-thu': day = 4; break;
         case 'plugin:bangumi-fri': day = 5; break;
         case 'plugin:bangumi-sat': day = 6; break;
-        default: moonplayer.warning('Unknown command.'); return;
+        default: imchenwen.warning('Unknown command.'); return;
     }
 
     if (bangumi_list !== null) {
         // Show list
         if (day === -1) {
-            moonplayer.show_result(latest_bangumis);
+            imchenwen.show_result(latest_bangumis);
         } else {
-            moonplayer.show_result(bangumi_list[day]);
+            imchenwen.show_result(bangumi_list[day]);
         }
     } else {
         // Init bangumi list
         url = 'https://api.bilibili.com/pgc/web/timeline/v2?season_type=1';
-        moonplayer.get_content(url, function(content) {
+        imchenwen.get_content(url, function(content) {
             var data = JSON.parse(content).result;
             var weekdays = data.timeline;
             var latest = data.latest;
@@ -127,9 +127,9 @@ function explore(command) {
 
             // Show list
             if (day === -1) {
-                moonplayer.show_result(latest_bangumis);
+                imchenwen.show_result(latest_bangumis);
             } else {
-                moonplayer.show_result(bangumi_list[day]);
+                imchenwen.show_result(bangumi_list[day]);
             }
         });
     }

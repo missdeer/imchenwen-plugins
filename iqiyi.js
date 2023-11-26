@@ -4,9 +4,9 @@ var website_name = 'Iqiyi';
 // Search
 function search(key, page) {
     var url = 'https://so.iqiyi.com/so/q_' + key;
-    moonplayer.get_content(url, function(content) {
+    imchenwen.get_content(url, function(content) {
         var result = list_links(content, "http://www.iqiyi.com/lib/m_");
-        moonplayer.show_result(result);
+        imchenwen.show_result(result);
     });
 }
 

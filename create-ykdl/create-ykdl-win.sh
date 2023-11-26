@@ -6,10 +6,10 @@ HERE="$(dirname "$(readlink -f "${0}")")"
 if [ -d ykdl ]; then
     rm -rf ykdl
 fi
-git clone 'https://github.com/zhangn1985/ykdl.git'
+git clone 'https://github.com/SeaHOH/ykdl.git'
 
 # Run PyInstaller
-cp "${HERE}/ykdl_main.py" ykdl/ykdl-moonplayer.py
+cp "${HERE}/ykdl_main.py" ykdl/ykdl-imchenwen.py
 cd ykdl
-pyinstaller -F --additional-hooks-dir hooks --distpath .. ykdl-moonplayer.py
+pyinstaller -F --additional-hooks-dir hooks --distpath .. ykdl-imchenwen.py
 cd ..

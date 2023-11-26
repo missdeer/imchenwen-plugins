@@ -41,9 +41,9 @@ jobs:
       - name: Upload files
         shell: bash
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           set -e
           export UPLOADTOOL_SUFFIX=`date "+%Y-%m-%d"`
           curl -Lo upload.sh https://github.com/probonopd/uploadtool/raw/master/upload.sh
-          bash upload.sh ykdl-moonplayer ykdl-moonplayer.exe plugins.zip
+          bash upload.sh ykdl-imchenwen ykdl-imchenwen.exe plugins.zip

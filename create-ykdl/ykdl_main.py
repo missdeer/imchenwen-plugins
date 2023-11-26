@@ -2,7 +2,7 @@
 
 
 # This is a runtime patcher
-# Patch ykdl at runtime to make it provide enouth message for MoonPlayer
+# Patch ykdl at runtime to make it provide enouth message for imchenwen
 # Add support for danmaku and cookies
 
 from __future__ import print_function
@@ -72,7 +72,7 @@ except:
     from urllib2 import HTTPCookieProcessor
 
 def arg_parser():
-    parser = ArgumentParser(description="Ykdl for MoonPlayer")
+    parser = ArgumentParser(description="Ykdl for imchenwen")
     parser.add_argument('--check-support', default=False, action='store_true', help="Check if the URL is supported.")
     parser.add_argument('--http-proxy', type=str, help="set proxy HOST:PORT for http(s) transfer. default: no proxy")
     parser.add_argument('--socks-proxy', type=str, help="set socks proxy HOST:PORT. default: no proxy")

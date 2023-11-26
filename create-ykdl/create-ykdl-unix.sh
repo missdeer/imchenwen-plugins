@@ -6,18 +6,18 @@ HERE="$(dirname "$(readlink -f "${0}")")"
 if [ -d ykdl ]; then
     rm -rf ykdl
 fi
-git clone 'https://github.com/zhangn1985/ykdl.git'
+git clone 'https://github.com/SeaHOH/ykdl.git'
 
 # Copy patched file
 cp "${HERE}/ykdl_main.py" ykdl/__main__.py
 
 # Compress to zip file
 cd ykdl
-zip -q ../ykdl-moonplayer ykdl/*.py ykdl/*/*.py ykdl/*/*/*.py ykdl/*/*/*.js __main__.py
+zip -q ../ykdl-imchenwen ykdl/*.py ykdl/*/*.py ykdl/*/*/*.py ykdl/*/*/*.js __main__.py
 cd ..
 
 # Create standalone
-echo '#!/usr/bin/env python' > ykdl-moonplayer
-cat ykdl-moonplayer.zip >> ykdl-moonplayer
-rm ykdl-moonplayer.zip
-chmod a+x ykdl-moonplayer
+echo '#!/usr/bin/env python' > ykdl-imchenwen
+cat ykdl-imchenwen.zip >> ykdl-imchenwen
+rm ykdl-imchenwen.zip
+chmod a+x ykdl-imchenwen
